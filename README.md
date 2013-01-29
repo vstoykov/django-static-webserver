@@ -23,12 +23,13 @@ or as ZIP package from https://github.com/vstoykov/django-static-webserver/archi
 Next you must you must create some folders and files. Directory tree must look like this:
 
     django-static-webserver\
-                           |-- html
-                           |    \
-                           |     |-- index.html
+                           |-- html\
+                           |    |-- index.html
                            |
-                           |-- static
-                           |-- media
+                           |-- static\
+                           |-- media\
+                           |-- webserver\
+                           |-- manage.py
 
 
 Contents in `static` directory are served as `/static/` and `media` is `/media/`. Every developer deside where to put his static files (javascript, style sheet and images) but if you want to use `as_thumbnail` (I will describe it later) images must be in media directory.
