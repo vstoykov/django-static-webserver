@@ -11,6 +11,6 @@ def render_template(request, path):
 			'%sindex.html' % path
 			]
 	try:
-		return render(request, templates)
+		return render(request, templates, {'request': request})
 	except TemplateDoesNotExist:
 		raise Http404('/%s can not be found' % path)
