@@ -1,5 +1,5 @@
 {% load thumbnail %}
 
 {% for image in image_list %}
-	<a href="{{ image.url }}" title="{{ image.title }}"><img src="{{ image.url|as_thumbnail }}" alt="{{ image.title }}"></a>
+	<a href="{{ image.url }}" title="{{ image.title }}"><img src="{{ image.url|as_thumbnail }}" alt="{{ image.title }}" width="100" height="75"></a>
 {% endfor %}
