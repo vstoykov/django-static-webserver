@@ -7,8 +7,18 @@ def here(*path):
         abspath = '%s/' % abspath
     return abspath
 
+def get_environ(name, default=None):
+    var = os.environ.get(name)
+    if var is None:
+        return default
+    elif var == 'True':
+        return True
+    elif var == 'False':
+        return False
+    return var
 
-DEBUG = True
+
+DEBUG = get_environ('DJANGO_DEBUG', True)
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
