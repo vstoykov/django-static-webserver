@@ -48,11 +48,14 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = False
 
+# Make it possible to configure SCRIPT_NAME from the environment
+FORCE_SCRIPT_NAME = get_environ('DJANGO_FORCE_SCRIPT_NAME', None)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+STATIC_URL = (FORCE_SCRIPT_NAME or '').rstrip('/') + '/static/'
+MEDIA_URL = (FORCE_SCRIPT_NAME or '').rstrip('/') + '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
