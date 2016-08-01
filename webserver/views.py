@@ -5,7 +5,7 @@ from django.conf import settings
 
 def render_template(request, path):
     if path and settings.APPEND_SLASH and not path.endswith('/'):
-        return redirect('/%s/' % path)
+        return redirect(request.path + '/')
 
     templates = [
         '%s.html' % path.rstrip('/'),
@@ -15,4 +15,4 @@ def render_template(request, path):
     try:
         return render(request, templates, {'request': request})
     except TemplateDoesNotExist:
-        raise Http404('/%s can not be found' % path)
+        raise Http404('%s can not be found' % request.path)
