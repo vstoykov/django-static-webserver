@@ -1,8 +1,6 @@
 # Django settings for webserver project.
 import os
 gettext = lambda s: s
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = BASE_DIR
 
 
 def get_environ(name, default=None):
@@ -15,6 +13,10 @@ def get_environ(name, default=None):
         return False
     return var
 
+
+BASE_DIR = get_environ('DJANGO_BASE_DIR',
+                       os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DATA_DIR = get_environ('DJANGO_DATA_DIR', BASE_DIR)
 
 DEBUG = get_environ('DJANGO_DEBUG', True)
 
