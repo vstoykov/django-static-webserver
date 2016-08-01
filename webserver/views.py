@@ -15,6 +15,4 @@ def render_template(request, path):
     try:
         return render(request, templates, {'request': request})
     except TemplateDoesNotExist:
-        if settings.DEBUG:
-            raise
         raise Http404('/%s can not be found' % path)
